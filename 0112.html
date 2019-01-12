@@ -41,8 +41,9 @@
       statusChangeCallback(response);
     });
   }
-
+//2.載入完成後，呼叫wndow.fbAsyncInit函式
   window.fbAsyncInit = function() {
+      //初始化Facebook SDK套件
     FB.init({
       appId      : '295543061101659',
       cookie     : true,  // enable cookies to allow the server to access 
@@ -50,7 +51,8 @@
       xfbml      : true,  // parse social plugins on this page
       version    : 'v2.8' // use graph api version 2.8
     });
-
+    //偵測使用者的登入狀態
+    
     // Now that we've initialized the JavaScript SDK, we call 
     // FB.getLoginStatus().  This function gets the state of the
     // person visiting this page and can return one of three states to
@@ -64,12 +66,19 @@
     // These three cases are handled in the callback function.
 
     FB.getLoginStatus(function(response) {
+        if(response.status==='connectd'){
+            testAPI(); //抓取使用者的資料
+        }else{ //使用者未登入，鼓勵使用者登入
+            document.getElementById("status").innerHTML = 'Please log' + "into this app.";
+        }
+        console.log(response);
       statusChangeCallback(response);
     });
 
   };
 
   // Load the SDK asynchronously
+// 1.載入 Facebook JavaScript SDK
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
