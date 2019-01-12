@@ -18,7 +18,7 @@
     function login(){
       FB.login(function(response){
         statusChangeCallback(response);
-      });
+      },{scope:"email,user_grender"});
     }
     //2.
     window.fbAsyncInit = function() {
