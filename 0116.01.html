@@ -55,7 +55,12 @@ window.fbAsyncInit=function(){
 	js.src = "https://connect.facebook.net/en_US/sdk.js";
 	fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-	
+function share(){
+	FB.ui({
+		method: 'share',
+		href: 'https://developers.facebook.com/docs/'
+	}, function(response){});
+}
 </script>
 </head>
 <body>
@@ -66,6 +71,6 @@ window.fbAsyncInit=function(){
 	<div id="main" style="display:none">
 		Hello
 	</div>
+	<button onclick="share();">Share</button>
 </body>
 </html>
-
