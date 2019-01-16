@@ -53,6 +53,7 @@
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
+    //抓取使用者塗鴉牆上的Posts
     FB.api('/me/feed', function(response) {
       console.log('response');
     })
