@@ -69,12 +69,12 @@ function read(){
 	});
 }
 function show(data){
-let list=document.querySelector("#list");
-list.innerHTML="";
-let messages;
-for(let i=0;i<data.length;i++){
-	message=data[i];
-	list.innerHTML=message.name.bold()+" "+messages.content+"</hr>"+list.innerHTML;
+	let list=document.querySelector("#list");
+	list.innerHTML="";
+	let message;
+	for(let i=0;i<data.length;i++){
+		message=data[i];
+		list.innerHTML=message.name.bold()+" "+messages.content+"</hr>"+list.innerHTML;
 	}
 }
 //網頁仔入完成後，做一些處理
