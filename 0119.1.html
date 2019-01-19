@@ -18,6 +18,7 @@
   let provider=new firebase.auth.FacebookAuthProvider();
   provider.addScope('user_birthday');
   //當使用者登入狀態變化的時候，呼叫我們提供的函式
+  let currentUser=null;
   auth.onAuthStateChanged(function(user) {
 	  let member=document.querySelector("#member");
 	  let welcome=document.querySelector("#welcome");
@@ -25,25 +26,37 @@
 	  welcome.style.display="none";
   if(user){
     // 使用者已經登入
-    var displayName = user.displayName;
-    var email = user.email;
-    var emailVerified = user.emailVerified;
-    var photoURL = user.photoURL;
-    var isAnonymous = user.isAnonymous;
-    var uid = user.uid;
-    var providerData = user.providerData;
+    console.log(user);
+	  currentUser=null;
+	  welcome.style.display="block";
   }else{ //使用者已經登出
 	  console.log(user);
+	  currentUser=null;
 	  welcome.style.display="block";
   }
 });
 function signIn(){
 	auth.signInWithPopup(provider).then(function(result){
 	}).catch(function(error){
-
 	});
 }
-
+let db=firebase.database();
+function post(){
+	let id=currentUser.uid;
+	let name=currentUser.displayName;
+	let content=document.querySelector("#conntent");
+	//加入資料庫
+	let ref=db.ref("/messages");
+	ref.push({
+		id:id,name:name,content:content,time:Date.now()
+	},function(error){
+		if(error){
+			alert(error);
+		}else{
+			alert("OK");
+		}
+	})
+}
 </script>
 </script>
 </head>
@@ -52,8 +65,10 @@ function signIn(){
 	<div id="welcome" style="display:none;">
 	<button onclick="signIn();">Sign In</button>
 	</div>
-
-	<div id="member"style="display:none;">Hello</div>
+	<div id="member"style="display:none;">
+		<textarea id="content"></textarea>
+		<button onclick="post();">Post</button>
+		Hello</div>
 	<div id="list">Message List</div>
 </body>
 </html>
