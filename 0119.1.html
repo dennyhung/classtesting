@@ -90,6 +90,17 @@ function show(data){
 		}
 	}
 }
+function del(){
+	let ref=db.ref("/messages/???");
+	ref.remove(function(error){
+		if(error){
+			alert(error);
+		}else{
+			alert("Removed");
+			read();
+		}
+	});
+}
 //網頁仔入完成後，做一些處理
 window.addEventListener("load",function(){
 	read();
