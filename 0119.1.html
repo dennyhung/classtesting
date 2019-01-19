@@ -56,8 +56,21 @@ function post(){
 		}else{
 			alert("OK");
 		}
-	})
+	});
 }
+function read(){
+	let ref=db.ref("/messages");
+	ref.once("value",function(snapshots){
+		let data=[];
+		snapshots.forEach(function(snapshot){
+			data.push(snapshot.val());
+		});
+		console.log(data);
+	});
+}
+window.addEventListener("load",function(){
+	read();
+});
 </script>
 </script>
 </head>
