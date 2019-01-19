@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Message Board</title>
+<script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB0RImfuC34eiBRFlJCCQgNGC0I51VF9Us",
+    authDomain: "asdasd-e70b3.firebaseapp.com",
+    databaseURL: "https://asdasd-e70b3.firebaseio.com",
+    projectId: "asdasd-e70b3",
+    storageBucket: "asdasd-e70b3.appspot.com",
+    messagingSenderId: "1015219666941"
+  };
+  firebase.initializeApp(config);
+  let auth=firebase.auth();
+  let provider=new firebase.auth.FacebookAuthProvider();
+  provider.addScope('user_birthday');
+  //當使用者登入狀態變化的時候，呼叫我們提供的函式
+  auth.onAuthStateChanged(function(user) {
+	  let member=document.querySelector("#member");
+	  let welcome=document.querySelector("#welcome");
+	  member.style.disply="none";
+	  welcome.style.display="none";
+  if(user){
+    // 使用者已經登入
+    var displayName = user.displayName;
+    var email = user.email;
+    var emailVerified = user.emailVerified;
+    var photoURL = user.photoURL;
+    var isAnonymous = user.isAnonymous;
+    var uid = user.uid;
+    var providerData = user.providerData;
+  }else{ //使用者已經登出
+	  console.log(user);
+  }
+});
+function signIn(){
+	auth.signInWithRedirect(provider).then(function(result){
+	}).catch(function(error){
+
+	});
+}
+
+</script>
+</script>
+</head>
+<body>
+	<h3>Message Board</h3>
+	<div id="welcome" style="display:none;"></div>
+	<button onlick="signIn();">Sign In</button>
+
+
+	<div id="member"style="display:none;">Hello</div>
+	<div id="list">Message List</div>
+</body>
+</html>
+
