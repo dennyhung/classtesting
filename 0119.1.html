@@ -34,6 +34,7 @@
     var providerData = user.providerData;
   }else{ //使用者已經登出
 	  console.log(user);
+	  welcome.style.display="block";
   }
 });
 function signIn(){
@@ -48,9 +49,9 @@ function signIn(){
 </head>
 <body>
 	<h3>Message Board</h3>
-	<div id="welcome" style="display:none;"></div>
+	<div id="welcome" style="display:none;">
 	<button onlick="signIn();">Sign In</button>
-
+	</div>
 
 	<div id="member"style="display:none;">Hello</div>
 	<div id="list">Message List</div>
