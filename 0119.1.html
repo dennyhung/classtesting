@@ -81,10 +81,10 @@ function show(data){
 		 list.innerHTML=message.name.bold()+" "+message.content+"<hr/>"+
 		 list.innerHTML;
 		}else{//登入狀態
-			if(currentUser.uid===message.id){//和留言作者為同一個人
+			if(currentUser.uid===message.id){ // 和留言的作者是同一個人
 				list.innerHTML=message.name.bold()+" "+message.content+
-				"<button onclick='del(\""+message.key+"\");'>Delete</button>"+
-				"<hr/>"+list.innerHTML;
+					"<button onclick='del(\""+message.key+"\");'>Delete</button>"+
+					"<hr/>"+list.innerHTML;
 			}else{//不同一個人
 				list.innerHTML=message.name.bold()+" "+message.content+"<hr/>"+
 				list.innerHTML;
