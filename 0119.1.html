@@ -94,7 +94,7 @@ function show(data){
 	}
 }
 function del(key){
-	let ref=db.ref("/messages/???");
+	let ref=db.ref("/messages/"+key);
 	ref.remove(function(error){
 		if(error){
 			alert(error);
