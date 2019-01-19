@@ -75,8 +75,19 @@ function show(data){
 	let message;
 	for(let i=0;i<data.length;i++){
 		message=data[i];
-		
-		list.innerHTML=message.name.bold()+" "+message.content+"<hr/>"+list.innerHTML;
+		if(currentUser===null){
+		 list.innerHTML=message.name.bold()+" "+message.content+"<hr/>"+
+		 list.innerHTML;
+		}else{//登入狀態
+			if(currentUser.uid===message.id){//和留言作者為同一個人
+				list.innerHTML=message.name.bold()+" "+message.content+
+				"<button onclick='del();'>Delete</button>"+
+				"<hr/>"+list.innerHTML;
+			}else{//不同一個人
+				list.innerHTML=message.name.bold()+" "+message.content+"<hr/>"+
+				list.innerHTML;
+			}
+		}
 	}
 }
 //網頁仔入完成後，做一些處理
