@@ -64,8 +64,11 @@ function read(){
 	ref.once("value",function(snapshots){
 		let data=[];
 		snapshots.forEach(function(snapshot){
+			let message=snapshot.val();
+			message.key=snapshot.key;
 			data.push(snapshot.val());
 		});
+		console.log(data);
 		show(data);
 	});
 }
