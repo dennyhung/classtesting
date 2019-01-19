@@ -38,6 +38,7 @@
 function signIn(){
 	auth.signInWithPopup(provider).then(function(result){
 	}).catch(function(error){
+		console.log(error);
 	});
 }
 let db=firebase.database();
@@ -65,10 +66,11 @@ function post(){
 	<div id="welcome" style="display:none;">
 	<button onclick="signIn();">Sign In</button>
 	</div>
-	<div id="member"style="display:none;">
+	<div id="member" style="display:none;">
 		<textarea id="content"></textarea>
 		<button onclick="post();">Post</button>
-		</div>
+	</div>
 	<div id="list">Message List</div>
 </body>
 </html>
+
