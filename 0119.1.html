@@ -49,7 +49,7 @@ function post(){
 	//加入資料庫
 	let ref=db.ref("/messages");
 	ref.push({
-		id:id, name:name, content:content, time:Date.now()
+		id:id, name:name,content:content,time:Date.now()
 	},function(error){
 		if(error){
 			alert(error);
