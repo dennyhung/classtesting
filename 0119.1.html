@@ -54,7 +54,8 @@ function post(){
 		if(error){
 			alert(error);
 		}else{
-			alert("OK");
+			document.querySelector("#content").value="";
+			read();
 		}
 	});
 }
