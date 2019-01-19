@@ -66,7 +66,7 @@ function read(){
 		snapshots.forEach(function(snapshot){
 			let message=snapshot.val();
 			message.key=snapshot.key;
-			data.push(snapshot.val());
+			data.push(message);
 		});
 		console.log(data);
 		show(data);
