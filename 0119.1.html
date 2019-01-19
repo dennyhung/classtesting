@@ -75,7 +75,8 @@ function show(data){
 	let message;
 	for(let i=0;i<data.length;i++){
 		message=data[i];
-		list.innerHTML=message.name.bold()+" "+message.content+"</hr>"+list.innerHTML;
+		
+		list.innerHTML=message.name.bold()+" "+message.content+"<hr/>"+list.innerHTML;
 	}
 }
 //網頁仔入完成後，做一些處理
